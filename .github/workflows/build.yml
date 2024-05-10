@@ -9,14 +9,14 @@ jobs:
         with:
           fetch-depth: 2
       - name: Unzip files
-        run: "unzip $(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | head -n 1) -d texfiles/"
+        run: "unzip $(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | head -n 1) -d ."
       - name: Build with LaTeX
         uses: dante-ev/latex-action@latest
         with:
-          root_file: texfiles/main.tex
+          root_file: ./main.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
       - uses: actions/upload-artifact@v4
         with:
-          path: texfiles/main.pdf
+          path: ./main.pdf
       
