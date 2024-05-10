@@ -1,0 +1,20 @@
+name: Build Latex File
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: Unzip files
+        run: "unzip (git diff --name-only | head -n 1) -d texfiles/"
+      - name: Build with LaTeX
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: texfiles/main.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      
+      
