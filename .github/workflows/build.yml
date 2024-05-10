@@ -19,4 +19,4 @@ jobs:
       - name: Upload PDF
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release upload ${{ github.run_id }} ./main.pdf
+        run: gh release create ${{ github.run_id }} ./main.pdf
