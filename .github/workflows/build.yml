@@ -9,7 +9,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: Unzip files
-        run: "unzip (git diff --name-only | head -n 1) -d texfiles/"
+        run: "unzip $(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | head -n 1) -d texfiles/"
       - name: Build with LaTeX
         uses: dante-ev/latex-action@latest
         with:
