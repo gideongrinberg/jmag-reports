@@ -13,7 +13,7 @@ jobs:
       - name: Build with LaTeX
         uses: dante-ev/latex-action@latest
         with:
-          root_file: main.tex
+          root_file: texfiles/main.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
       - uses: actions/upload-artifact@v4
