@@ -17,7 +17,6 @@ jobs:
           root_file: main.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: Upload results
-        uses: actions/upload-artifact@v4
-        path: texfiles/main.pdf
-      
+      - uses: actions/upload-artifact@v4
+        with:
+          path: ./texfiles/main.pdf
