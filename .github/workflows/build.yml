@@ -17,5 +17,6 @@ jobs:
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
       - uses: actions/upload-artifact@v4
-        path: texfiles/main.pdf
+        with:
+          path: texfiles/main.pdf
       
