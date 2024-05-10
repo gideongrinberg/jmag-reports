@@ -11,10 +11,13 @@ jobs:
       - name: Unzip files
         run: "unzip $(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | head -n 1) -d texfiles/"
       - name: Build with LaTeX
+        working-directory: texfiles/
         uses: dante-ev/latex-action@latest
         with:
-          root_file: texfiles/main.tex
+          root_file: main.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        path: texfiles/main.pdf
       
